@@ -56,3 +56,86 @@ header {
 img {
   width: 100%;
 }
+
+/*Form*/
+.form {
+  padding: 5rem 0;
+}
+
+form {
+  padding: 1.5rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+input,
+textarea {
+  width: 100%;
+  font-size: 1rem;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+textarea {
+  resize: vertical;
+}
+
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.brand {
+  padding: 1.25rem;
+  width: 260px;
+}
+
+.button__form {
+  border: none;
+  border-radius: 5px;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--white);
+  padding: 1.25rem;
+  cursor: pointer;
+}
+
+.button__form--default {
+  background-color: var(--blue-dark);
+}
+
+.button__form--danger {
+  background-color: var(--red);
+}
+
+.title {
+  font-size: 1.5rem;
+  color: var(--blue-dark);
+  font-weight: bold;
+}
+
+/*Article*/
+.articles {
+  padding: 0 0 5rem 0;
+}
+
+.articles__article {
+  padding: 1.25rem 0;
+}
+
+.articles__article h2 {
+  margin-bottom: 1.25rem;
+  font-weight: 700;
+}
+
+.articles__article span {
+  color: var(--text-subtitle);
+  display: block;
+  padding: 1.25rem 0;
+}
+
+.footer {
+  padding: 1.5rem 0;
+  text-align: center;
+}
