@@ -1,0 +1,20 @@
+{
+  "name": "substance",
+  "version": "1.0.0",
+  "description": "squad #1 - Projeto Integrador - devfortech",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pedro-drosa/substance.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pedro-drosa/substance/issues"
+  },
+  "homepage": "https://github.com/pedro-drosa/substance#readme"
+}
