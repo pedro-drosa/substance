@@ -18,33 +18,23 @@
 
     <section id="form" class="form container">
       <h4 class="title">Register or edit an article</h4>
-      <form action="">
-        <input type="text" placeholder="Enter the title of the article" />
-        <textarea placeholder="Enter article content here"></textarea>
-        <button class="button__form button__form--default">Enviar</button>
+      <form action="" name="new_article">
+        <input name="title" type="text" placeholder="Title of the article" />
+        <textarea name="content" placeholder="Content here"></textarea>
+        <select name="status" id="status">
+          <option>Approved</option>
+          <option selected>In Revision</option>
+        </select>
+        <input name="authors" type="text" placeholder="Separate names with ;" />
+        <input name="knowledge_area" type="text" placeholder="Knowledge Area" />
+        <button class="button__form button__form--default" data-button="create">
+          Enviar
+        </button>
       </form>
     </section>
 
     <main>
-      <section id="articles" class="container articles">
-        <article class="articles__article">
-          <a href="">
-            <h2>
-              Global UX Design Awards nomination for N5 and Vanbreda Risk &
-              Benefits
-            </h2>
-            <p>
-              Our Vanbreda Healthcare platform has been awarded a UX Design
-              Awards nomination by International Design Center Berlin – the
-              leading, independent design institution promoting design as a
-              driver for business and social innovation.
-            </p>
-            <span>July 28, 2022</span>
-            <button class="button__form button__form--default">Update</button>
-            <button class="button__form button__form--danger">Delete</button>
-          </a>
-        </article>
-      </section>
+      <section id="articles" class="container articles" data-section></section>
     </main>
     <footer id="footer" class="footer">
       <div class="container">

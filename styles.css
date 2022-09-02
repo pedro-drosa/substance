@@ -67,9 +67,11 @@ form {
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
+  margin: 0.5rem;
 }
 
 input,
+select,
 textarea {
   width: 100%;
   font-size: 1rem;
@@ -99,6 +101,7 @@ textarea {
   color: var(--white);
   padding: 1.25rem;
   cursor: pointer;
+  margin: 0.2rem;
 }
 
 .button__form--default {
@@ -122,6 +125,7 @@ textarea {
 
 .articles__article {
   padding: 1.25rem 0;
+  margin: 0.5rem;
 }
 
 .articles__article h2 {
