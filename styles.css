@@ -60,6 +60,13 @@ img {
 /*Form*/
 .form {
   padding: 1.5rem 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+}
+
+.form__image {
+  max-width: 420px;
 }
 
 form {
@@ -161,4 +168,13 @@ textarea {
 .footer {
   padding: 1.5rem 0;
   text-align: center;
+}
+
+@media (max-width: 800px) {
+  .form {
+    display: block;
+  }
+  .form__image {
+    display: none;
+  }
 }
