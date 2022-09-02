@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/pedro-drosa/substance/issues"
   },
-  "homepage": "https://github.com/pedro-drosa/substance#readme"
+  "homepage": "https://github.com/pedro-drosa/substance#readme",
+  "devDependencies": {
+    "git-commit-msg-linter": "^4.1.3"
+  }
 }
