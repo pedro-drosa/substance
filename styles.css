@@ -59,7 +59,7 @@ img {
 
 /*Form*/
 .form {
-  padding: 5rem 0;
+  padding: 1.5rem 0;
 }
 
 form {
@@ -76,7 +76,18 @@ textarea {
   width: 100%;
   font-size: 1rem;
   padding: 5px;
+  border: 1px solid rgba(0, 0, 0, 0.151);
   border-radius: 5px;
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+input:hover,
+select:hover,
+textarea:hover {
+  outline: none;
+  box-shadow: 0 0 0 2px #363f5f77;
 }
 
 textarea {
@@ -101,7 +112,15 @@ textarea {
   color: var(--white);
   padding: 1.25rem;
   cursor: pointer;
-  margin: 0.2rem;
+}
+
+.button__form:hover {
+  outline: none;
+  box-shadow: 0 0 0 2px #363f5f77;
+}
+
+.button__form + .button__form {
+  margin-left: 0.5rem;
 }
 
 .button__form--default {
