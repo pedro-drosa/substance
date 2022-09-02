@@ -23,8 +23,14 @@ function create_article() {
   articles.push(article);
 }
 
+function delete_article(idArticle) {
+  articles.splice(idArticle, 1);
+  clearSection();
+  fetch_all();
+}
+
 function fetch_all() {
-  articles.forEach((elem) => {
+  articles.forEach((elem, index) => {
     let section = document.querySelector("[data-section]");
     let article_dom = document.createElement("article");
     let title_dom = document.createElement("h2");
@@ -49,6 +55,8 @@ function fetch_all() {
     article_dom.setAttribute("class", "articles__article");
     edit_button.setAttribute("class", "button__form button__form--default");
     delete_button.setAttribute("class", "button__form button__form--danger");
+    delete_button.setAttribute("data-button-delete", `${index}`);
+    delete_button.addEventListener("click", handleDelete);
     section.appendChild(article_dom);
   });
 }
@@ -63,6 +71,11 @@ function handleCreate(event) {
   create_article();
   clearSection();
   fetch_all();
+}
+
+function handleDelete(event) {
+  let idArticle = event.target.getAttribute("data-button-delete");
+  delete_article(idArticle);
 }
 
 const create_button = document.querySelector('[data-button="create"]');
