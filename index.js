@@ -52,3 +52,18 @@ function fetch_all() {
     section.appendChild(article_dom);
   });
 }
+
+function clearSection() {
+  let section = document.querySelector("[data-section]");
+  section.innerHTML = "";
+}
+
+function handleCreate(event) {
+  event.preventDefault();
+  create_article();
+  clearSection();
+  fetch_all();
+}
+
+const create_button = document.querySelector('[data-button="create"]');
+create_button.addEventListener("click", handleCreate);
