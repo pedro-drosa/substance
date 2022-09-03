@@ -22,14 +22,19 @@
       </div>
       <form action="" name="new_article">
         <h4 class="title">Register or edit an article</h4>
-        <input name="title" type="text" placeholder="Title of the article" />
-        <textarea name="content" placeholder="Content here"></textarea>
+        <label for="title">Article title</label>
+        <input id="title" name="title" type="text" placeholder="My new article" />
+        <label for="content">Article content</label>
+        <textarea id="content" name="content" placeholder="Your content here"></textarea>
+        <label for="status">Article status</label>
         <select name="status" id="status">
           <option>Approved</option>
           <option selected>In Revision</option>
         </select>
-        <input name="authors" type="text" placeholder="Separate names with ;" />
-        <input name="knowledge_area" type="text" placeholder="Knowledge Area" />
+        <label for="authors">Authors name</label>
+        <input id="authors" name="authors" type="text" placeholder="Separate names with ;" />
+        <label for="knowledge_area">Knowledge area</label>
+        <input id="knowledge_area" name="knowledge_area" type="text" placeholder="Computer Science" />
         <button class="button__form button__form--default" data-button="create">
           Create
         </button>

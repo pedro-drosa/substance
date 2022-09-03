@@ -73,8 +73,13 @@ form {
   padding: 1.5rem 0;
   display: flex;
   flex-direction: column;
-  gap: 1.25rem;
+
   margin: 0.5rem;
+}
+
+label {
+  color: var(--text-subtitle);
+  margin-top: 0.6rem;
 }
 
 input,
@@ -85,6 +90,7 @@ textarea {
   padding: 5px;
   border: 1px solid rgba(0, 0, 0, 0.151);
   border-radius: 5px;
+  margin: 0.6rem 0;
 }
 
 input:focus,
