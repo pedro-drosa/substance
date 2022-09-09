@@ -1,0 +1,13 @@
+version: '3'
+services:
+  substance:
+    container_name: substance-api
+    build: .
+    ports:
+      - 5000:5000
+    volumes:
+      - ./:/usr/app
+      - node_modules:/app/node_modules
+    network_mode: host
+volumes:
+  node_modules: {}
