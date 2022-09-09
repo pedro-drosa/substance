@@ -4,7 +4,7 @@
   "description": "squad #1 - Projeto Integrador - devfortech",
   "main": "src/server.js",
   "scripts": {
-    "dev": "nodemon src/server.js",
+    "dev": "nodemon -L src/server.js",
     "prepare": "husky install"
   },
   "repository": {
