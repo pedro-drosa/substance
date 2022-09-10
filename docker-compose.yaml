@@ -1,13 +1,36 @@
 version: '3'
+networks:
+  substance_net:
+    driver: bridge
 services:
-  substance:
+  mysql-db:
+    container_name: substance-db
+    image: mysql:8.0.30
+    networks:
+      - substance_net
+    ports:
+      - 3306:3306
+    expose:
+      - 3306
+    environment:
+      MYSQL_ROOT_PASSWORD: 'mysql'
+      MYSQL_USER: 'mysql'
+      MYSQL_PASSWORD: 'mysql'
+      MYSQL_DATABASE: 'database_substance'
+    volumes:
+      - mysqldata:/var/lib/mysql
+  substance-api:
     container_name: substance-api
     build: .
+    networks:
+      - substance_net
     ports:
       - 5000:5000
+    depends_on:
+      - mysql-db
     volumes:
       - ./:/usr/app
       - node_modules:/app/node_modules
-    network_mode: host
 volumes:
-  node_modules: {}
+  mysqldata:
+  node_modules:
