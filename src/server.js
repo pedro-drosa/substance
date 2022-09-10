@@ -1,14 +1,8 @@
-import http from 'http';
+import App from './App';
 
-const hostname = '127.0.0.1';
-const port = 5000;
+const APP_PORT = 5000;
+const APP_BASE_URL = 'http://localhost';
 
-const server = http.createServer((req, res) => {
-  res.statusCode = 200;
-  res.setHeader('Content-Type', 'text/plain');
-  res.end('Hello Docker');
-});
-
-server.listen(port, hostname, () => {
-  console.log(`Server running at http://${hostname}:${port}/`);
+App.listen(APP_PORT, () => {
+  console.log(`Servidor rodando em:${APP_BASE_URL}:${APP_PORT}`);
 });

@@ -37,6 +37,7 @@
     "**/*": "prettier --write --ignore-unknown"
   },
   "dependencies": {
+    "express": "^4.18.1",
     "sucrase": "^3.25.0"
   }
 }
