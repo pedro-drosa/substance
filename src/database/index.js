@@ -1,6 +1,8 @@
 import Sequelize from 'sequelize';
 import databaseConfig from '../config/database';
 
+import User from '../app/models/User';
+
 class Database {
   connection;
 
@@ -11,6 +13,7 @@ class Database {
   initialize() {
     this.connection = new Sequelize(databaseConfig);
     this.authenticate();
+    User.init(this.connection);
   }
 
   async authenticate() {
