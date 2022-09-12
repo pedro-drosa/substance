@@ -1,9 +1,9 @@
 import { randomUUID } from 'crypto';
-import User from '../models/User';
+import UsersRepository from '../repositories/sequelize/UsersRepository';
 
 class CreateUserService {
   async execute(userData) {
-    return User.create({ id: randomUUID(), ...userData });
+    return UsersRepository.createUser({ id: randomUUID(), ...userData });
   }
 }
 
