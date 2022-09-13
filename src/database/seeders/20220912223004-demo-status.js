@@ -4,8 +4,8 @@ module.exports = {
       {
         id: 1,
         type: 'approvado',
-        createdAt: '2022-09-12 00:0:00',
-        updatedAt: '2022-09-12 00:0:00',
+        createdAt: '2022-09-12 00:00:00',
+        updatedAt: '2022-09-12 00:00:00',
       },
       {
         id: 2,
@@ -17,7 +17,7 @@ module.exports = {
         id: 3,
         type: 'reprovado',
         createdAt: '2022-09-12 00:00:00',
-        updatedAt: '2022-09-12 00:0:00',
+        updatedAt: '2022-09-12 00:00:00',
       },
     ]);
   },
