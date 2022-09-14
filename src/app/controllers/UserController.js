@@ -1,6 +1,7 @@
 import CreateUserService from '../services/CreateUserService';
 import GetAllUserService from '../services/GetAllUserService';
 import GetUserService from '../services/GetUserService';
+import DeleteUserService from '../services/DeleteUserService';
 
 class UserController {
   async store(request, response) {
@@ -23,6 +24,12 @@ class UserController {
     const { id } = request.params;
     const users = await GetUserService.execute(id);
     return response.status(200).json(users);
+  }
+
+  async destroy(request, response) {
+    const { id } = request.params;
+    await DeleteUserService.execute(id);
+    return response.status(204).json({ id });
   }
 }
 
