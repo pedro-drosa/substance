@@ -1,3 +1,4 @@
+import bcryptjs from 'bcryptjs';
 import CreateUserService from '../services/CreateUserService';
 import GetAllUserService from '../services/GetAllUserService';
 import GetUserService from '../services/GetUserService';
@@ -35,7 +36,7 @@ class UserController {
       firstName,
       lastName,
       email,
-      password,
+      password: await bcryptjs.hash(password, 10),
     });
     return response.status(200).json(user);
   }
