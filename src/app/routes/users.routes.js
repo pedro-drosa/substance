@@ -6,6 +6,7 @@ const userRouter = Router();
 userRouter.get('/', UserController.index);
 userRouter.get('/:id', UserController.get);
 userRouter.post('/', UserController.store);
-userRouter.delete('/:id', UserController.destroy);
+userRouter.put('/edit/:id', UserController.update);
+userRouter.delete('delete/:id', UserController.destroy);
 
 export default userRouter;

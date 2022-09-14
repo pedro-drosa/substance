@@ -16,6 +16,10 @@ class UsersRepository {
   async deleteUser(userId) {
     User.destroy({ where: { id: userId } });
   }
+
+  async updateUser(userData) {
+    return User.update({ ...userData }, { where: { id: userData.id } });
+  }
 }
 
 export default new UsersRepository();
