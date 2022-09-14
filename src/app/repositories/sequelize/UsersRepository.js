@@ -1,25 +1,32 @@
 import User from '../../models/User';
 
 class UsersRepository {
+  constructor(UserModel) {
+    this.userModel = UserModel;
+  }
+
   async createUser(userData) {
-    return User.create({ ...userData });
+    return this.userModel.create({ ...userData });
   }
 
   async getAll() {
-    return User.findAll();
+    return this.userModel.findAll();
   }
 
   async getUser(userId) {
-    return User.findByPk(userId);
+    return this.userModel.findByPk(userId);
   }
 
   async deleteUser(userId) {
-    User.destroy({ where: { id: userId } });
+    this.userModel.destroy({ where: { id: userId } });
   }
 
   async updateUser(userData) {
-    return User.update({ ...userData }, { where: { id: userData.id } });
+    return this.userModel.update(
+      { ...userData },
+      { where: { id: userData.id } },
+    );
   }
 }
 
-export default new UsersRepository();
+export default new UsersRepository(User);
