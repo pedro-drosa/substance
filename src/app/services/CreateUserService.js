@@ -2,9 +2,13 @@ import { randomUUID } from 'crypto';
 import UsersRepository from '../repositories/sequelize/UsersRepository';
 
 class CreateUserService {
+  constructor(IUsersRepository) {
+    this.usersRepository = IUsersRepository;
+  }
+
   async execute(userData) {
-    return UsersRepository.createUser({ id: randomUUID(), ...userData });
+    return this.usersRepository.createUser({ id: randomUUID(), ...userData });
   }
 }
 
-export default new CreateUserService();
+export default new CreateUserService(UsersRepository);
