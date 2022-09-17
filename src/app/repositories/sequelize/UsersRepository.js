@@ -21,6 +21,10 @@ class UsersRepository {
     this.userModel.destroy({ where: { id: userId } });
   }
 
+  async findUserByEmail(email) {
+    return this.userModel.findOne({ where: { email } });
+  }
+
   async updateUser(userData) {
     return this.userModel.update(
       { ...userData },
