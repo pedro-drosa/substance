@@ -7,14 +7,21 @@ import UpdateUserService from '../services/UpdateUserService';
 
 class UserController {
   async store(request, response) {
-    const { firstName, lastName, email, password } = request.body;
-    const user = await CreateUserService.execute({
-      firstName,
-      lastName,
-      email,
-      password,
-    });
-    return response.status(201).json(user);
+    try {
+      const { firstName, lastName, email, password } = request.body;
+      const user = await CreateUserService.execute({
+        firstName,
+        lastName,
+        email,
+        password,
+      });
+      return response.status(201).json(user);
+    } catch (error) {
+      const fail = {
+        message: error.message,
+      };
+      return response.status(500).json(fail);
+    }
   }
 
   async index(request, response) {
@@ -31,14 +38,21 @@ class UserController {
   async update(request, response) {
     const { id } = request.params;
     const { firstName, lastName, email, password } = request.body;
-    const user = await UpdateUserService.execute({
-      id,
-      firstName,
-      lastName,
-      email,
-      password: await bcryptjs.hash(password, 10),
-    });
-    return response.status(200).json(user);
+    try {
+      const user = await UpdateUserService.execute({
+        id,
+        firstName,
+        lastName,
+        email,
+        password: await bcryptjs.hash(password, 10),
+      });
+      return response.status(200).json(user);
+    } catch (error) {
+      const fail = {
+        message: error.message,
+      };
+      return response.status(500).json(fail);
+    }
   }
 
   async destroy(request, response) {

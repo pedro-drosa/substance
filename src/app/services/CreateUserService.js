@@ -7,7 +7,16 @@ class CreateUserService {
   }
 
   async execute(userData) {
-    return this.usersRepository.createUser({ id: randomUUID(), ...userData });
+    const { email } = userData;
+    const userExists = await this.usersRepository.findUserByEmail(email);
+
+    if (userExists) throw new Error('user email already exists');
+
+    return this.usersRepository.createUser({
+      id: randomUUID(),
+      ...userData,
+      roleId: '1',
+    });
   }
 }
 

@@ -6,6 +6,11 @@ class UpdateUserService {
   }
 
   async execute(userData) {
+    const { email } = userData;
+    const userExists = await this.usersRepository.findUserByEmail(email);
+
+    if (userExists) throw new Error('user email already exists');
+
     return this.usersRepository.updateUser({ ...userData });
   }
 }
