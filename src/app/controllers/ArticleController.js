@@ -1,8 +1,9 @@
-import CreateArticleService from '../services/CreateArticleService';
+import GetAllArticlesService from '../services/GetAllArticlesService';
 
 class ArticleController {
-  index(req, res) {
-    res.json(CreateArticleService.execute({ id: 2 }));
+  async index(request, response) {
+    const articles = await GetAllArticlesService.execute();
+    return response.status(200).json(articles);
   }
 }
 
