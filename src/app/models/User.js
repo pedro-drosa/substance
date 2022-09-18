@@ -9,7 +9,6 @@ class User extends Model {
         lastName: DataTypes.STRING,
         email: DataTypes.STRING,
         password: DataTypes.STRING,
-        roleId: DataTypes.INTEGER,
       },
       { sequelize: connection, tableName: 'users', freezeTableName: 'users' },
     );
@@ -19,6 +18,10 @@ class User extends Model {
       currentUser.password = await bcryptjs.hash(user.password, 10);
       return user;
     });
+  }
+
+  static associate(models) {
+    this.belongsTo(models.Role, { foreignKey: 'roleId', as: 'role' });
   }
 }
 

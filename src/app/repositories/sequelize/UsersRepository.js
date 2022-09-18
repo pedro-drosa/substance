@@ -14,7 +14,13 @@ class UsersRepository {
   }
 
   async getUser(userId) {
-    return this.userModel.findByPk(userId);
+    return User.findByPk(userId, {
+      attributes: { exclude: ['password', 'roleId'] },
+      include: {
+        association: 'role',
+        attributes: ['id', 'title'],
+      },
+    });
   }
 
   async deleteUser(userId) {
