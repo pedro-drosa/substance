@@ -10,7 +10,13 @@ class UsersRepository {
   }
 
   async getAll() {
-    return this.userModel.findAll();
+    return User.findAll({
+      attributes: { exclude: ['password', 'roleId'] },
+      include: {
+        association: 'role',
+        attributes: ['id', 'title'],
+      },
+    });
   }
 
   async getUser(userId) {
