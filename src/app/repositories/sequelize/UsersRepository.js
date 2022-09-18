@@ -38,9 +38,9 @@ class UsersRepository {
   }
 
   async updateUser(userData) {
-    return this.userModel.update(
+    return User.update(
       { ...userData },
-      { where: { id: userData.id } },
+      { where: { id: userData.id }, individualHooks: true },
     );
   }
 }

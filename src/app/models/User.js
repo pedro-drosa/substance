@@ -18,6 +18,12 @@ class User extends Model {
       currentUser.password = await bcryptjs.hash(user.password, 10);
       return user;
     });
+
+    this.addHook('beforeUpdate', async (user) => {
+      const currentUser = user || undefined;
+      currentUser.password = await bcryptjs.hash(user.password, 10);
+      return user;
+    });
   }
 
   static associate(models) {
