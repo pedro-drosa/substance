@@ -3,8 +3,11 @@ import databaseConfig from '../config/database';
 
 import User from '../app/models/User';
 import Role from '../app/models/Role';
+import Article from '../app/models/Article';
+import Status from '../app/models/Status';
+import KnowledgeArea from '../app/models/KnowledgeArea';
 
-const models = [User, Role];
+const models = [User, Role, Article, Status, KnowledgeArea];
 
 class Database {
   connection;
