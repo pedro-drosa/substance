@@ -20,6 +20,7 @@ const ensureAuthenticated = async (request, response, next) => {
   try {
     const decoded = await promisify(verify)(token, secret);
     request.userId = decoded.id;
+    request.roleId = decoded.roleId;
     return next();
   } catch (error) {
     return response.status(401).json('Invalid Token');

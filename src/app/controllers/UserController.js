@@ -37,7 +37,7 @@ class UserController {
 
   async update(request, response) {
     const { id } = request.params;
-    const { firstName, lastName, email, password } = request.body;
+    const { firstName, lastName, email, password, roleId } = request.body;
     try {
       const user = await UpdateUserService.execute({
         id,
@@ -45,6 +45,7 @@ class UserController {
         lastName,
         email,
         password: await bcryptjs.hash(password, 10),
+        roleId,
       });
       return response.status(200).json(user);
     } catch (error) {
