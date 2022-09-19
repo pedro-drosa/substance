@@ -2,6 +2,12 @@ import Sequelize from 'sequelize';
 import databaseConfig from '../config/database';
 
 import User from '../app/models/User';
+import Role from '../app/models/Role';
+import Article from '../app/models/Article';
+import Status from '../app/models/Status';
+import KnowledgeArea from '../app/models/KnowledgeArea';
+
+const models = [User, Role, Article, Status, KnowledgeArea];
 
 class Database {
   connection;
@@ -13,7 +19,7 @@ class Database {
   initialize() {
     this.connection = new Sequelize(databaseConfig);
     this.authenticate();
-    User.init(this.connection);
+    this.initModels();
   }
 
   async authenticate() {
@@ -23,6 +29,13 @@ class Database {
     } catch (error) {
       console.error('Unable to connect to the database:', error);
     }
+  }
+
+  initModels() {
+    models.map((model) => model.init(this.connection));
+    models.map(
+      (model) => model.associate && model.associate(this.connection.models),
+    );
   }
 }
 

@@ -10,11 +10,23 @@ class UsersRepository {
   }
 
   async getAll() {
-    return this.userModel.findAll();
+    return this.userModel.findAll({
+      attributes: { exclude: ['password', 'roleId'] },
+      include: {
+        association: 'role',
+        attributes: ['id', 'title'],
+      },
+    });
   }
 
   async getUser(userId) {
-    return this.userModel.findByPk(userId);
+    return this.userModel.findByPk(userId, {
+      attributes: { exclude: ['password', 'roleId'] },
+      include: {
+        association: 'role',
+        attributes: ['id', 'title'],
+      },
+    });
   }
 
   async deleteUser(userId) {
@@ -26,9 +38,9 @@ class UsersRepository {
   }
 
   async updateUser(userData) {
-    return this.userModel.update(
+    return User.update(
       { ...userData },
-      { where: { id: userData.id } },
+      { where: { id: userData.id }, individualHooks: true },
     );
   }
 }

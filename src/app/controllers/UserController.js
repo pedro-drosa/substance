@@ -1,4 +1,3 @@
-import bcryptjs from 'bcryptjs';
 import CreateUserService from '../services/CreateUserService';
 import GetAllUserService from '../services/GetAllUserService';
 import GetUserService from '../services/GetUserService';
@@ -37,15 +36,14 @@ class UserController {
 
   async update(request, response) {
     const { id } = request.params;
-    const { firstName, lastName, email, password, roleId } = request.body;
+    const { firstName, lastName, email, password } = request.body;
     try {
       const user = await UpdateUserService.execute({
         id,
         firstName,
         lastName,
         email,
-        password: await bcryptjs.hash(password, 10),
-        roleId,
+        password,
       });
       return response.status(200).json(user);
     } catch (error) {

@@ -6,14 +6,21 @@ class UpdateUserService {
   }
 
   async execute(userData) {
-    const { email } = userData;
-    const userExists = await this.usersRepository.findUserByEmail(email);
+    const { id, email } = userData;
+    const user = await this.usersRepository.getUser(id);
 
-    if (userExists && userExists.id !== userData.id) {
-      throw new Error('user email already exists');
+    if (email && email !== user.email) {
+      const emailExists = await this.usersRepository.findUserByEmail(email);
+      if (emailExists) throw new Error('user email already exists');
     }
 
-    return this.usersRepository.updateUser({ ...userData });
+    const [, [updatedUser]] = await this.usersRepository.updateUser({
+      ...userData,
+    });
+
+    const { firstName, lastName, createdAt, updatedAt } = updatedUser;
+
+    return { id, firstName, lastName, email, createdAt, updatedAt };
   }
 }
 

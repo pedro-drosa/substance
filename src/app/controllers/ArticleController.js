@@ -1,8 +1,30 @@
+import GetAllArticlesService from '../services/GetAllArticlesService';
 import CreateArticleService from '../services/CreateArticleService';
 
 class ArticleController {
-  index(req, res) {
-    res.json(CreateArticleService.execute({ id: 2 }));
+  async index(request, response) {
+    const articles = await GetAllArticlesService.execute();
+    return response.status(200).json(articles);
+  }
+
+  async store(request, response) {
+    try {
+      const { title, content, authors, knowledgeAreaId } = request.body;
+      const { userId } = request;
+      const article = await CreateArticleService.execute({
+        title,
+        content,
+        authors,
+        userId,
+        knowledgeAreaId,
+      });
+      return response.status(201).json(article);
+    } catch (error) {
+      const fail = {
+        message: error.message,
+      };
+      return response.status(500).json(fail);
+    }
   }
 }
 
