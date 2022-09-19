@@ -5,6 +5,10 @@ class ArticleRepository {
     this.articleModel = ArticleModel;
   }
 
+  async createArticle(articleData) {
+    return this.articleModel.create({ ...articleData });
+  }
+
   async getAll() {
     return this.articleModel.findAll({
       attributes: { exclude: ['userId', 'statusId'] },
@@ -23,6 +27,10 @@ class ArticleRepository {
         },
       ],
     });
+  }
+
+  async findArticleByTitle(title) {
+    return this.articleModel.findOne({ where: { title } });
   }
 }
 
