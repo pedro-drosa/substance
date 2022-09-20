@@ -43,6 +43,7 @@
     "jsonwebtoken": "^8.5.1",
     "mysql2": "^2.3.3",
     "sequelize": "^6.21.6",
-    "sucrase": "^3.25.0"
+    "sucrase": "^3.25.0",
+    "swagger-ui-express": "^4.5.0"
   }
 }
