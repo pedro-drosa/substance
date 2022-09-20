@@ -32,6 +32,10 @@ class ArticleRepository {
   async findArticleByTitle(title) {
     return this.articleModel.findOne({ where: { title } });
   }
+
+  async deleteArticle(id) {
+    return this.articleModel.destroy({ where: { id } });
+  }
 }
 
 export default new ArticleRepository(Article);

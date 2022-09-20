@@ -1,5 +1,6 @@
 import GetAllArticlesService from '../services/GetAllArticlesService';
 import CreateArticleService from '../services/CreateArticleService';
+import DeleteArticleService from '../services/DeleteArticleService';
 
 class ArticleController {
   async index(request, response) {
@@ -25,6 +26,12 @@ class ArticleController {
       };
       return response.status(500).json(fail);
     }
+  }
+
+  async destroy(request, response) {
+    const { id } = request.params;
+    await DeleteArticleService.execute(id);
+    return response.status(204).json();
   }
 }
 
