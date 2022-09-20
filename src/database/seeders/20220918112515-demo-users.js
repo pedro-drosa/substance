@@ -8,7 +8,7 @@ module.exports = {
         email: 'pedromascarenhas@substance.com',
         password:
           '$2a$10$/ylEaoHjkAvZy8hZRuJhfu1XhTqBmQIn09bBLoQft64.hWIMvW3YW',
-        roleId: 3,
+        roleId: '3',
         createdAt: '2022-09-17 10:33:00',
         updatedAt: '2022-09-17 10:33:00',
       },
@@ -19,7 +19,7 @@ module.exports = {
         email: 'josevitor@substance.com',
         password:
           '$2a$10$/ylEaoHjkAvZy8hZRuJhfu1XhTqBmQIn09bBLoQft64.hWIMvW3YW',
-        roleId: 3,
+        roleId: '3',
         createdAt: '2022-09-17 10:33:00',
         updatedAt: '2022-09-17 10:33:00',
       },
@@ -30,7 +30,7 @@ module.exports = {
         email: 'gabrielkenji@substance.com',
         password:
           '$2a$10$/ylEaoHjkAvZy8hZRuJhfu1XhTqBmQIn09bBLoQft64.hWIMvW3YW',
-        roleId: 3,
+        roleId: '3',
         createdAt: '2022-09-17 10:33:00',
         updatedAt: '2022-09-17 10:33:00',
       },
@@ -41,7 +41,7 @@ module.exports = {
         email: 'john@doe.com',
         password:
           '$2a$10$/ylEaoHjkAvZy8hZRuJhfu1XhTqBmQIn09bBLoQft64.hWIMvW3YW',
-        roleId: 1,
+        roleId: '1',
         createdAt: '2022-09-17 10:33:00',
         updatedAt: '2022-09-17 10:33:00',
       },
