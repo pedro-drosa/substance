@@ -17,11 +17,11 @@ class AuthenticateService {
 
     if (!passwordCheck) throw new Error('invalid password');
 
-    const { id } = userExists;
+    const { id, roleId } = userExists;
     const { secret, expiresIn } = authConfig.jwt;
 
     return {
-      token: jwt.sign({ id }, secret, { expiresIn }),
+      token: jwt.sign({ id, roleId }, secret, { expiresIn }),
     };
   }
 }
