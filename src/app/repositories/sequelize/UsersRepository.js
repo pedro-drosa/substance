@@ -43,6 +43,10 @@ class UsersRepository {
       { where: { id: userData.id }, individualHooks: true },
     );
   }
+
+  async updateUserRole(userId, roleId) {
+    return User.update({ roleId }, { where: { id: userId } });
+  }
 }
 
 export default new UsersRepository(User);
