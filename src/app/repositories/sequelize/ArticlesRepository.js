@@ -29,12 +29,20 @@ class ArticleRepository {
     });
   }
 
+  async getArticle(articleId) {
+    return this.articleModel.findByPk(articleId);
+  }
+
   async findArticleByTitle(title) {
     return this.articleModel.findOne({ where: { title } });
   }
 
   async deleteArticle(id) {
     return this.articleModel.destroy({ where: { id } });
+  }
+
+  async updateArticleStatus(articleId, statusId) {
+    return this.articleModel.update({ statusId }, { where: { id: articleId } });
   }
 }
 
