@@ -36,9 +36,17 @@ class ArticleController {
   }
 
   async destroy(request, response) {
-    const { id } = request.params;
-    await DeleteArticleService.execute(id);
-    return response.status(204).json();
+    try {
+      const { id: articleId } = request.params;
+      const { userId } = request;
+      await DeleteArticleService.execute(articleId, userId);
+      return response.status(204).json();
+    } catch (error) {
+      const fail = {
+        message: error.message,
+      };
+      return response.status(500).json(fail);
+    }
   }
 }
 
