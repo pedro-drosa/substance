@@ -14,9 +14,9 @@
   "paths": {
     "/sessions": {
       "post": {
-        "summary": "auth",
-        "tags": ["Misc"],
-        "operationId": "auth",
+        "summary": "sessions",
+        "tags": ["sessions"],
+        "operationId": "sessions",
         "deprecated": false,
         "produces": ["application/json"],
         "parameters": [
@@ -33,7 +33,7 @@
             "required": true,
             "description": "",
             "schema": {
-              "$ref": "#/definitions/authrequest"
+              "$ref": "#/definitions/sessionsrequest"
             }
           }
         ],
@@ -45,11 +45,200 @@
         }
       }
     },
-    "/users": {
+    "/articles/": {
       "get": {
-        "summary": "get users",
-        "tags": ["Misc"],
-        "operationId": "getusers",
+        "summary": "get articles",
+        "tags": ["articles"],
+        "operationId": "getarticles",
+        "deprecated": false,
+        "produces": ["application/json; charset=utf-8"],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": false,
+            "default": "Bearer {token}",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "default": "",
+              "items": {
+                "$ref": "#/definitions/getarticle"
+              }
+            },
+            "examples": {
+              "application/json; charset=utf-8": [
+                {
+                  "id": "0b4aba08-d1e9-4dba-9e35-316e0f2a7fd4",
+                  "title": "Phasellus et Consequat",
+                  "content": "Duis at felis feugiat metus sollicitudin mollis eget vitae tellus. Duis egestas non orci quis sollicitudin.",
+                  "authors": "John Doe",
+                  "createdAt": "2022-09-19T19:10:00.000Z",
+                  "updatedAt": "2022-09-19T19:10:00.000Z",
+                  "knowledgeAreaId": 3,
+                  "publisher": {
+                    "id": "6821d553-7a45-45b8-91e9-82616342d35b",
+                    "email": "gabrielkenji@substance.com"
+                  },
+                  "status": {
+                    "type": "em revisão"
+                  },
+                  "knowledgeArea": {
+                    "name": "análise de dados"
+                  }
+                },
+                {
+                  "id": "27774e70-9a32-4299-9cda-5903f66d6d5c",
+                  "title": "Maecenas at Lobortis",
+                  "content": "Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Mauris vitae mattis ex. Quisque vel semper nibh.",
+                  "authors": "José Vitor; Gabriel Kenji",
+                  "createdAt": "2022-09-19T19:10:00.000Z",
+                  "updatedAt": "2022-09-19T19:10:00.000Z",
+                  "knowledgeAreaId": 2,
+                  "publisher": {
+                    "id": "b22e6392-ae7b-428e-8ae7-356822778d79",
+                    "email": "josevitor@substance.com"
+                  },
+                  "status": {
+                    "type": "em revisão"
+                  },
+                  "knowledgeArea": {
+                    "name": "engenharia de software"
+                  }
+                },
+                {
+                  "id": "d5cdde56-bb49-4009-b184-a9bfa6077c66",
+                  "title": "Sollicitudin Mollis",
+                  "content": "Nam imperdiet efficitur gravit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean neque sapien, eleifend eget ornare at, congue non erat. In id sapien hendrerit, fringilla risus a, interdum lorem.",
+                  "authors": "Pedro Mascarenhas; José Vitor; Gabriel Kenji",
+                  "createdAt": "2022-09-19T19:10:00.000Z",
+                  "updatedAt": "2022-09-19T19:10:00.000Z",
+                  "knowledgeAreaId": 1,
+                  "publisher": {
+                    "id": "56486f88-410f-49c0-8b54-77095b6767c9",
+                    "email": "pedromascarenhas@substance.com"
+                  },
+                  "status": {
+                    "type": "em revisão"
+                  },
+                  "knowledgeArea": {
+                    "name": "ciência da computação"
+                  }
+                }
+              ]
+            },
+            "headers": {
+              "X-Powered-By": {
+                "type": "string",
+                "default": "Express"
+              },
+              "Content-Length": {
+                "type": "string",
+                "default": "1666"
+              },
+              "ETag": {
+                "type": "string",
+                "default": "W/\"682-IRkVLS5sdqgaqfnSpFbm36HsIfA\""
+              },
+              "Date": {
+                "type": "string",
+                "default": "Tue, 20 Sep 2022 23:06:54 GMT"
+              },
+              "Connection": {
+                "type": "string",
+                "default": "keep-alive"
+              },
+              "Keep-Alive": {
+                "type": "string",
+                "default": "timeout=5"
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "create article",
+        "tags": ["articles"],
+        "operationId": "createarticle",
+        "deprecated": false,
+        "produces": ["application/json; charset=utf-8"],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": false,
+            "default": "Bearer {token}",
+            "type": "string"
+          },
+          {
+            "name": "Body",
+            "in": "body",
+            "required": true,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/createarticlerequest"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created",
+            "schema": {
+              "$ref": "#/definitions/createarticle"
+            },
+            "examples": {
+              "application/json; charset=utf-8": {
+                "id": "687b7b68-f1db-4d90-8711-1e45b1ac1c2f",
+                "title": "Phasellus et Consequat Utra",
+                "content": "Duis at felis feugiat metus sollicitudin mollis eget vitae",
+                "authors": "John Doe",
+                "userId": "b22e6392-ae7b-428e-8ae7-356822778d79",
+                "knowledgeAreaId": 1,
+                "statusId": 2,
+                "updatedAt": "2022-09-20T23:53:11.317Z",
+                "createdAt": "2022-09-20T23:53:11.317Z"
+              }
+            },
+            "headers": {
+              "X-Powered-By": {
+                "type": "string",
+                "default": "Express"
+              },
+              "Content-Length": {
+                "type": "string",
+                "default": "334"
+              },
+              "ETag": {
+                "type": "string",
+                "default": "W/\"14e-DFUcKjbW8F4R3+yBQFYDm9Qcq4o\""
+              },
+              "Date": {
+                "type": "string",
+                "default": "Tue, 20 Sep 2022 23:53:11 GMT"
+              },
+              "Connection": {
+                "type": "string",
+                "default": "keep-alive"
+              },
+              "Keep-Alive": {
+                "type": "string",
+                "default": "timeout=5"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/articles/{id}": {
+      "get": {
+        "summary": "get article",
+        "tags": ["articles"],
+        "operationId": "getarticle",
         "deprecated": false,
         "produces": ["application/json"],
         "parameters": [
@@ -68,12 +257,131 @@
           }
         }
       },
-      "post": {
-        "summary": "create user",
-        "tags": ["Misc"],
-        "operationId": "createuser",
+      "put": {
+        "summary": "update article",
+        "tags": ["articles"],
+        "operationId": "updatearticle",
         "deprecated": false,
         "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": false,
+            "default": "Bearer {token}",
+            "type": "string"
+          },
+          {
+            "name": "Body",
+            "in": "body",
+            "required": true,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/updatearticlerequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        }
+      },
+      "delete": {
+        "summary": "delete article",
+        "tags": ["articles"],
+        "operationId": "deletearticle",
+        "deprecated": false,
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": false,
+            "default": "Bearer {token}",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        }
+      }
+    },
+    "/users": {
+      "get": {
+        "summary": "get users",
+        "tags": ["users"],
+        "operationId": "getusers",
+        "deprecated": false,
+        "produces": ["application/json; charset=utf-8"],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": false,
+            "default": "Bearer {token}",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "default": [
+                {
+                  "id": "02945114-9a59-4adc-9efa-ad5d82b00f88",
+                  "firstName": "Pedro",
+                  "lastName": "Mascarenhas",
+                  "email": "pedromascarenhas@gmail.com",
+                  "createdAt": "2022-09-17T13:53:51.000Z",
+                  "updatedAt": "2022-09-17T13:53:51.000Z",
+                  "role": null
+                }
+              ],
+              "items": {
+                "$ref": "#/definitions/getuser"
+              }
+            },
+            "headers": {
+              "X-Powered-By": {
+                "type": "string",
+                "default": "Express"
+              },
+              "Content-Length": {
+                "type": "string",
+                "default": "2000"
+              },
+              "ETag": {
+                "type": "string",
+                "default": "W/\"7d0-2PYCV52ni0jbUVQcu2QJN3qrEWo\""
+              },
+              "Date": {
+                "type": "string",
+                "default": "Tue, 20 Sep 2022 22:54:11 GMT"
+              },
+              "Connection": {
+                "type": "string",
+                "default": "keep-alive"
+              },
+              "Keep-Alive": {
+                "type": "string",
+                "default": "timeout=5"
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "create user",
+        "tags": ["users"],
+        "operationId": "createuser",
+        "deprecated": false,
+        "produces": ["application/json; charset=utf-8"],
         "parameters": [
           {
             "name": "Authorization",
@@ -93,6 +401,131 @@
           }
         ],
         "responses": {
+          "201": {
+            "description": "Created",
+            "schema": {
+              "$ref": "#/definitions/createuser"
+            },
+            "examples": {
+              "application/json; charset=utf-8": {
+                "id": "496b92f9-a126-4913-bf56-65fa2c906416",
+                "firstName": "Pedro 6",
+                "lastName": "Mascarenhas",
+                "email": "pedromascarenhas6@gmail.com",
+                "password": "$2a$10$AbndcZqy2QxIBMeavv4Se.L5TuWjdm1teCANPiL0F8UiSh4PTJo2W",
+                "roleId": "1",
+                "updatedAt": "2022-09-20T22:56:50.687Z",
+                "createdAt": "2022-09-20T22:56:50.687Z"
+              }
+            },
+            "headers": {
+              "X-Powered-By": {
+                "type": "string",
+                "default": "Express"
+              },
+              "Content-Length": {
+                "type": "string",
+                "default": "295"
+              },
+              "ETag": {
+                "type": "string",
+                "default": "W/\"127-9tODKBQSAdct9axXk/57nX6OklE\""
+              },
+              "Date": {
+                "type": "string",
+                "default": "Tue, 20 Sep 2022 22:56:50 GMT"
+              },
+              "Connection": {
+                "type": "string",
+                "default": "keep-alive"
+              },
+              "Keep-Alive": {
+                "type": "string",
+                "default": "timeout=5"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/users/{id}": {
+      "get": {
+        "summary": "get user",
+        "tags": ["users"],
+        "operationId": "getuser",
+        "deprecated": false,
+        "produces": ["application/json; charset=utf-8"],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": false,
+            "default": "Bearer {token}",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/getuser1"
+            },
+            "examples": {
+              "application/json; charset=utf-8": {
+                "id": "02945114-9a59-4adc-9efa-ad5d82b00f88",
+                "firstName": "Pedro",
+                "lastName": "Mascarenhas",
+                "email": "pedromascarenhas@gmail.com",
+                "createdAt": "2022-09-17T13:53:51.000Z",
+                "updatedAt": "2022-09-17T13:53:51.000Z",
+                "role": null
+              }
+            },
+            "headers": {
+              "X-Powered-By": {
+                "type": "string",
+                "default": "Express"
+              },
+              "Content-Length": {
+                "type": "string",
+                "default": "217"
+              },
+              "ETag": {
+                "type": "string",
+                "default": "W/\"d9-UWf9IQmARMFjke3kY/H8ohUmXPc\""
+              },
+              "Date": {
+                "type": "string",
+                "default": "Tue, 20 Sep 2022 22:56:08 GMT"
+              },
+              "Connection": {
+                "type": "string",
+                "default": "keep-alive"
+              },
+              "Keep-Alive": {
+                "type": "string",
+                "default": "timeout=5"
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "delete user",
+        "tags": ["users"],
+        "operationId": "deleteuser",
+        "deprecated": false,
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": false,
+            "default": "Bearer {token}",
+            "type": "string"
+          }
+        ],
+        "responses": {
           "200": {
             "description": "",
             "headers": {}
@@ -103,10 +536,10 @@
     "/users/1": {
       "put": {
         "summary": "update user",
-        "tags": ["Misc"],
+        "tags": ["users"],
         "operationId": "updateuser",
         "deprecated": false,
-        "produces": ["application/json"],
+        "produces": ["application/json; charset=utf-8"],
         "parameters": [
           {
             "name": "Authorization",
@@ -127,6 +560,137 @@
         ],
         "responses": {
           "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/updateuser"
+            },
+            "examples": {
+              "application/json; charset=utf-8": {
+                "id": "1",
+                "firstName": "José Victor",
+                "lastName": "Martins Figueiredo",
+                "email": "josevictormobile@gmail.com",
+                "createdAt": "2022-09-17T10:23:43.000Z",
+                "updatedAt": "2022-09-20T22:57:27.101Z"
+              }
+            },
+            "headers": {
+              "X-Powered-By": {
+                "type": "string",
+                "default": "Express"
+              },
+              "Content-Length": {
+                "type": "string",
+                "default": "184"
+              },
+              "ETag": {
+                "type": "string",
+                "default": "W/\"b8-b5LjIgLCAeE82NNxeNT19XzzFf8\""
+              },
+              "Date": {
+                "type": "string",
+                "default": "Tue, 20 Sep 2022 22:57:27 GMT"
+              },
+              "Connection": {
+                "type": "string",
+                "default": "keep-alive"
+              },
+              "Keep-Alive": {
+                "type": "string",
+                "default": "timeout=5"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/administrators/{id}": {
+      "patch": {
+        "summary": "change role",
+        "tags": ["administrators"],
+        "operationId": "changerole",
+        "deprecated": false,
+        "produces": ["application/json; charset=utf-8"],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": false,
+            "default": "Bearer {token}",
+            "type": "string"
+          },
+          {
+            "name": "Body",
+            "in": "body",
+            "required": true,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/changerolerequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "default": "",
+              "items": {
+                "type": "integer",
+                "format": "int32"
+              }
+            },
+            "examples": {
+              "application/json; charset=utf-8": [1]
+            },
+            "headers": {
+              "X-Powered-By": {
+                "type": "string",
+                "default": "Express"
+              },
+              "Content-Length": {
+                "type": "string",
+                "default": "3"
+              },
+              "ETag": {
+                "type": "string",
+                "default": "W/\"3-9imuRLez3P7URNNj5ibt9BHsaag\""
+              },
+              "Date": {
+                "type": "string",
+                "default": "Wed, 21 Sep 2022 00:06:22 GMT"
+              },
+              "Connection": {
+                "type": "string",
+                "default": "keep-alive"
+              },
+              "Keep-Alive": {
+                "type": "string",
+                "default": "timeout=5"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/proofreaders/{id}": {
+      "patch": {
+        "summary": "change status",
+        "tags": ["proofreaders"],
+        "operationId": "changestatus",
+        "deprecated": false,
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": false,
+            "default": "Bearer {token}",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
             "description": "",
             "headers": {}
           }
@@ -135,10 +699,10 @@
     }
   },
   "definitions": {
-    "authrequest": {
-      "title": "authrequest",
+    "sessionsrequest": {
+      "title": "sessionsrequest",
       "example": {
-        "email": "josevictor@gmail.com",
+        "email": "pedromascarenhas5@gmail.com",
         "password": "123456"
       },
       "type": "object",
@@ -152,12 +716,344 @@
       },
       "required": ["email", "password"]
     },
+    "getarticle": {
+      "title": "getarticle",
+      "example": {
+        "id": "0b4aba08-d1e9-4dba-9e35-316e0f2a7fd4",
+        "title": "Phasellus et Consequat",
+        "content": "Duis at felis feugiat metus sollicitudin mollis eget vitae tellus. Duis egestas non orci quis sollicitudin.",
+        "authors": "John Doe",
+        "createdAt": "2022-09-19T19:10:00.000Z",
+        "updatedAt": "2022-09-19T19:10:00.000Z",
+        "knowledgeAreaId": 3,
+        "publisher": {
+          "id": "6821d553-7a45-45b8-91e9-82616342d35b",
+          "email": "gabrielkenji@substance.com"
+        },
+        "status": {
+          "type": "em revisão"
+        },
+        "knowledgeArea": {
+          "name": "análise de dados"
+        }
+      },
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "content": {
+          "type": "string"
+        },
+        "authors": {
+          "type": "string"
+        },
+        "createdAt": {
+          "type": "string"
+        },
+        "updatedAt": {
+          "type": "string"
+        },
+        "knowledgeAreaId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "publisher": {
+          "$ref": "#/definitions/Publisher"
+        },
+        "status": {
+          "$ref": "#/definitions/Status"
+        },
+        "knowledgeArea": {
+          "$ref": "#/definitions/KnowledgeArea"
+        }
+      },
+      "required": [
+        "id",
+        "title",
+        "content",
+        "authors",
+        "createdAt",
+        "updatedAt",
+        "knowledgeAreaId",
+        "publisher",
+        "status",
+        "knowledgeArea"
+      ]
+    },
+    "Publisher": {
+      "title": "Publisher",
+      "example": {
+        "id": "6821d553-7a45-45b8-91e9-82616342d35b",
+        "email": "gabrielkenji@substance.com"
+      },
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        }
+      },
+      "required": ["id", "email"]
+    },
+    "Status": {
+      "title": "Status",
+      "example": {
+        "type": "em revisão"
+      },
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string"
+        }
+      },
+      "required": ["type"]
+    },
+    "KnowledgeArea": {
+      "title": "KnowledgeArea",
+      "example": {
+        "name": "análise de dados"
+      },
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        }
+      },
+      "required": ["name"]
+    },
+    "createarticlerequest": {
+      "title": "createarticlerequest",
+      "example": {
+        "title": "Phasellus et Consequat Utra",
+        "content": "Duis at felis feugiat metus sollicitudin mollis eget vitae",
+        "authors": "John Doe",
+        "knowledgeAreaId": 1
+      },
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "content": {
+          "type": "string"
+        },
+        "authors": {
+          "type": "string"
+        },
+        "knowledgeAreaId": {
+          "type": "integer",
+          "format": "int32"
+        }
+      },
+      "required": ["title", "content", "authors", "knowledgeAreaId"]
+    },
+    "createarticle": {
+      "title": "createarticle",
+      "example": {
+        "id": "687b7b68-f1db-4d90-8711-1e45b1ac1c2f",
+        "title": "Phasellus et Consequat Utra",
+        "content": "Duis at felis feugiat metus sollicitudin mollis eget vitae",
+        "authors": "John Doe",
+        "userId": "b22e6392-ae7b-428e-8ae7-356822778d79",
+        "knowledgeAreaId": 1,
+        "statusId": 2,
+        "updatedAt": "2022-09-20T23:53:11.317Z",
+        "createdAt": "2022-09-20T23:53:11.317Z"
+      },
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "content": {
+          "type": "string"
+        },
+        "authors": {
+          "type": "string"
+        },
+        "userId": {
+          "type": "string"
+        },
+        "knowledgeAreaId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "statusId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "updatedAt": {
+          "type": "string"
+        },
+        "createdAt": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "title",
+        "content",
+        "authors",
+        "userId",
+        "knowledgeAreaId",
+        "statusId",
+        "updatedAt",
+        "createdAt"
+      ]
+    },
+    "updatearticlerequest": {
+      "title": "updatearticlerequest",
+      "example": {
+        "title": "Phasellus et Consequat Utra",
+        "content": "Duis at felis feugiat metus sollicitudin mollis eget vitae",
+        "authors": "John Doe",
+        "knowledgeAreaId": 1
+      },
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "content": {
+          "type": "string"
+        },
+        "authors": {
+          "type": "string"
+        },
+        "knowledgeAreaId": {
+          "type": "integer",
+          "format": "int32"
+        }
+      },
+      "required": ["title", "content", "authors", "knowledgeAreaId"]
+    },
+    "getuser": {
+      "title": "getuser",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "firstName": {
+          "type": "string"
+        },
+        "lastName": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "createdAt": {
+          "type": "string"
+        },
+        "updatedAt": {
+          "type": "string"
+        },
+        "role": {
+          "$ref": "#/definitions/Role"
+        }
+      },
+      "required": [
+        "id",
+        "firstName",
+        "lastName",
+        "email",
+        "createdAt",
+        "updatedAt",
+        "role"
+      ]
+    },
+    "Role": {
+      "title": "Role",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "title": {
+          "type": "string"
+        }
+      }
+    },
+    "Role1": {
+      "title": "Role1",
+      "example": {
+        "id": 3,
+        "title": "administrator"
+      },
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "title": {
+          "type": "string"
+        }
+      },
+      "required": ["id", "title"]
+    },
+    "getuser1": {
+      "title": "getuser1",
+      "example": {
+        "id": "02945114-9a59-4adc-9efa-ad5d82b00f88",
+        "firstName": "Pedro",
+        "lastName": "Mascarenhas",
+        "email": "pedromascarenhas@gmail.com",
+        "createdAt": "2022-09-17T13:53:51.000Z",
+        "updatedAt": "2022-09-17T13:53:51.000Z",
+        "role": null
+      },
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "firstName": {
+          "type": "string"
+        },
+        "lastName": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "createdAt": {
+          "type": "string"
+        },
+        "updatedAt": {
+          "type": "string"
+        },
+        "role": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "firstName",
+        "lastName",
+        "email",
+        "createdAt",
+        "updatedAt",
+        "role"
+      ]
+    },
     "createuserrequest": {
       "title": "createuserrequest",
       "example": {
-        "firstName": "Pedro 5",
+        "firstName": "Pedro 6",
         "lastName": "Mascarenhas",
-        "email": "pedromascarenhas5@gmail.com",
+        "email": "pedromascarenhas6@gmail.com",
         "password": "123456"
       },
       "type": "object",
@@ -177,13 +1073,63 @@
       },
       "required": ["firstName", "lastName", "email", "password"]
     },
+    "createuser": {
+      "title": "createuser",
+      "example": {
+        "id": "496b92f9-a126-4913-bf56-65fa2c906416",
+        "firstName": "Pedro 6",
+        "lastName": "Mascarenhas",
+        "email": "pedromascarenhas6@gmail.com",
+        "password": "$2a$10$AbndcZqy2QxIBMeavv4Se.L5TuWjdm1teCANPiL0F8UiSh4PTJo2W",
+        "roleId": "1",
+        "updatedAt": "2022-09-20T22:56:50.687Z",
+        "createdAt": "2022-09-20T22:56:50.687Z"
+      },
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "firstName": {
+          "type": "string"
+        },
+        "lastName": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        },
+        "roleId": {
+          "type": "string"
+        },
+        "updatedAt": {
+          "type": "string"
+        },
+        "createdAt": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "firstName",
+        "lastName",
+        "email",
+        "password",
+        "roleId",
+        "updatedAt",
+        "createdAt"
+      ]
+    },
     "updateuserrequest": {
       "title": "updateuserrequest",
       "example": {
-        "firstName": "José",
-        "lastName": "Victor",
+        "firstName": "José Victor",
+        "lastName": "Martins Figueiredo",
         "email": "josevictormobile@gmail.com",
-        "password": "123456",
+        "password": "1234567",
         "roleId": 3
       },
       "type": "object",
@@ -206,12 +1152,77 @@
         }
       },
       "required": ["firstName", "lastName", "email", "password", "roleId"]
+    },
+    "updateuser": {
+      "title": "updateuser",
+      "example": {
+        "id": "1",
+        "firstName": "José Victor",
+        "lastName": "Martins Figueiredo",
+        "email": "josevictormobile@gmail.com",
+        "createdAt": "2022-09-17T10:23:43.000Z",
+        "updatedAt": "2022-09-20T22:57:27.101Z"
+      },
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "firstName": {
+          "type": "string"
+        },
+        "lastName": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "createdAt": {
+          "type": "string"
+        },
+        "updatedAt": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "firstName",
+        "lastName",
+        "email",
+        "createdAt",
+        "updatedAt"
+      ]
+    },
+    "changerolerequest": {
+      "title": "changerolerequest",
+      "example": {
+        "roleId": 2
+      },
+      "type": "object",
+      "properties": {
+        "roleId": {
+          "type": "integer",
+          "format": "int32"
+        }
+      },
+      "required": ["roleId"]
     }
   },
   "tags": [
     {
-      "name": "Misc",
-      "description": ""
+      "name": "sessions"
+    },
+    {
+      "name": "articles"
+    },
+    {
+      "name": "users"
+    },
+    {
+      "name": "administrators"
+    },
+    {
+      "name": "proofreaders"
     }
   ]
 }
