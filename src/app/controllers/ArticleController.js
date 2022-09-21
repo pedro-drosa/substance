@@ -2,6 +2,7 @@ import GetAllArticlesService from '../services/GetAllArticlesService';
 import CreateArticleService from '../services/CreateArticleService';
 import DeleteArticleService from '../services/DeleteArticleService';
 import GetArticleService from '../services/GetArticleService';
+import UpdateArticleService from '../services/UpdateArticleService';
 
 class ArticleController {
   async index(request, response) {
@@ -27,6 +28,25 @@ class ArticleController {
         knowledgeAreaId,
       });
       return response.status(201).json(article);
+    } catch (error) {
+      const fail = {
+        message: error.message,
+      };
+      return response.status(500).json(fail);
+    }
+  }
+
+  async update(request, response) {
+    try {
+      const { id: articleId } = request.params;
+      const { userId } = request;
+      const articleData = request.body;
+      const article = await UpdateArticleService.execute(
+        articleId,
+        userId,
+        articleData,
+      );
+      return response.status(200).json(article);
     } catch (error) {
       const fail = {
         message: error.message,

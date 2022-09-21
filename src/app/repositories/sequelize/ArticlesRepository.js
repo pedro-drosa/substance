@@ -57,6 +57,13 @@ class ArticleRepository {
     return this.articleModel.destroy({ where: { id } });
   }
 
+  async updateArticle(articleData) {
+    return this.articleModel.update(
+      { ...articleData },
+      { where: { id: articleData.id } },
+    );
+  }
+
   async updateArticleStatus(articleId, statusId) {
     return this.articleModel.update({ statusId }, { where: { id: articleId } });
   }
