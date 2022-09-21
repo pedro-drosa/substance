@@ -1,6 +1,7 @@
 import { randomUUID } from 'crypto';
 import ArticlesRepository from '../repositories/sequelize/ArticlesRepository';
 import GetKnowledgeAreaService from './GetKnowledgeAreaService';
+import GetUserService from './GetUserService';
 
 class CreateArticleService {
   constructor(IArticlesRepository) {
@@ -9,13 +10,16 @@ class CreateArticleService {
 
   async execute(articleData) {
     const { title, userId, knowledgeAreaId } = articleData;
+    const userExists = await GetUserService.execute(userId);
+
+    if (!userExists) throw new Error('User does not exist');
 
     const articleExists = await this.articlesRepository.findArticleByTitle(
       title,
     );
 
     if (articleExists) {
-      throw new Error('There is already an article with this title');
+      throw new Error('there is already an article with this title');
     }
 
     const knowledgeAreaExists = await GetKnowledgeAreaService.execute(
