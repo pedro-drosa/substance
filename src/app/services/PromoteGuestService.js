@@ -11,7 +11,8 @@ class PromoteGuestService {
     if (!userExists) throw new Error('user does not exist');
     const roleExists = await GetRoleService.execute(roleId);
     if (!roleExists) throw new Error('role does not exist');
-    return this.usersRepository.updateUserRole(userId, roleId);
+    await this.usersRepository.updateUserRole(userId, roleId);
+    return { role: roleId };
   }
 }
 
