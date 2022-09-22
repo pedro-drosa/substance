@@ -118,7 +118,7 @@ Breve descrição dos endpoints da aplicação.
   PATCH /proofreaders/{id}
   ```   
 </details>
-  
+<br>
 
 <h1 id="run">🚀 Como executar ?</h1>
 
