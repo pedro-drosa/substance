@@ -37,6 +37,88 @@
 <a href=""><img src="https://img.shields.io/badge/Insomnia-4000BF?logo=insomnia&logoColor=white&style=for-the-badge"/></a>
 <a href=""><img src="https://img.shields.io/badge/-Swagger-%23Clojure?style=for-the-badge&logo=swagger&logoColor=white"/> <br/><br/></a>
 
+### Api Endpoints
+
+Breve descrição dos endpoints da aplicação.
+
+<details>
+  <summary>Sessions</summary>
+ <br>
+  
+  Utilizado para logar e obter o token de autenticação  
+  ``` ruby
+  POST /sessions
+  ```  
+</details>
+<details>
+  <summary>Articles</summary>
+ <br>  
+  
+  Retorna uma lista de artigos 
+  ``` ruby
+  GET /articles
+  ```   
+  Salva um artigo
+  ``` ruby
+  POST /articles
+  ```
+  Retorna um artigo pelo id
+  ``` ruby
+  GET /articles/{id}  
+  ```
+  Atualiza um artigo
+  ``` ruby
+  PUT /articles/{id}  
+  ```
+  Deleta um artigo
+  ``` ruby
+  PUT /articles/{id}  
+  ```
+</details>
+<details>
+  <summary>Users</summary>
+ <br>  
+  
+  Retorna uma lista de usuários 
+  ``` ruby
+  GET /users
+  ```   
+  Salva um usuário
+  ``` ruby
+  POST /users
+  ```
+  Retorna um usuário pelo id
+  ``` ruby
+  GET /users/{id}  
+  ```
+  Atualiza um usuário
+  ``` ruby
+  PUT /users/{id}  
+  ```
+  Deleta um usuário
+  ``` ruby
+  PUT /users/{id}  
+  ```
+</details>
+<details>
+  <summary>Administrators</summary>
+ <br>  
+  
+  Altera a função de um usuário 
+  ``` ruby
+  PATCH /administrators/{id}
+  ```   
+</details>
+<details>
+  <summary>Proofreaders</summary>
+ <br>  
+  
+  Altera o status de um artigo 
+  ``` ruby
+  PATCH /proofreaders/{id}
+  ```   
+</details>
+  
 
 <h1 id="run">🚀 Como executar ?</h1>
 
