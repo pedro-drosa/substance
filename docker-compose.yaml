@@ -13,10 +13,10 @@ services:
     expose:
       - 3306
     environment:
-      MYSQL_ROOT_PASSWORD: 'mysql'
-      MYSQL_USER: 'mysql'
-      MYSQL_PASSWORD: 'mysql'
-      MYSQL_DATABASE: 'database_substance'
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+      MYSQL_USER: ${DB_USER}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+      MYSQL_DATABASE: ${DB_NAME}
     volumes:
       - mysqldata:/var/lib/mysql
   substance-api:
