@@ -20,6 +20,7 @@ services:
     volumes:
       - mysqldata:/var/lib/mysql
   substance-api:
+    entrypoint: ['/bin/bash', './entrypoint.sh']
     container_name: substance-api
     build: .
     networks:
