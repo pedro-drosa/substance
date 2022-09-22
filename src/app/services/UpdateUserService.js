@@ -9,6 +9,8 @@ class UpdateUserService {
     const { id, email } = userData;
     const user = await this.usersRepository.getUser(id);
 
+    if (!user) throw new Error('user does not exists');
+
     if (email && email !== user.email) {
       const emailExists = await this.usersRepository.findUserByEmail(email);
       if (emailExists) throw new Error('user email already exists');
