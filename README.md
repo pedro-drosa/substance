@@ -37,6 +37,39 @@
 <a href=""><img src="https://img.shields.io/badge/Insomnia-4000BF?logo=insomnia&logoColor=white&style=for-the-badge"/></a>
 <a href=""><img src="https://img.shields.io/badge/-Swagger-%23Clojure?style=for-the-badge&logo=swagger&logoColor=white"/> <br/><br/></a>
 
+
+
+<!-- HTML for static distribution bundle build -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Swagger UI</title>
+  <link rel="stylesheet" type="text/css" href="./swagger-ui.css" >
+  <link rel="icon" type="image/png" href="./favicon-32x32.png" sizes="32x32" /><link rel="icon" type="image/png" href="./favicon-16x16.png" sizes="16x16" />
+  <style>
+    html
+    {
+      box-sizing: border-box;
+      overflow: -moz-scrollbars-vertical;
+      overflow-y: scroll;
+    }
+    *,
+    *:before,
+    *:after
+    {
+      box-sizing: inherit;
+    }
+
+    body {
+      margin:0;
+      background: #fafafa;
+    }
+  </style>
+</head>
+
+<body>
+
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="position:absolute;width:0;height:0">
   <defs>
     <symbol viewBox="0 0 20 20" id="unlocked">
@@ -70,6 +103,22 @@
 
   </defs>
 </svg>
+
+<div id="swagger-ui"></div>
+
+<script src="./swagger-ui-bundle.js"> </script>
+<script src="./swagger-ui-standalone-preset.js"> </script>
+<script src="./swagger-ui-init.js"> </script>
+
+
+
+<style>
+  .swagger-ui .topbar .download-url-wrapper { display: none } undefined
+</style>
+</body>
+
+</html>
+
 
 <h1 id="run">🚀 Como executar ?</h1>
 
