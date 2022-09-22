@@ -162,3 +162,28 @@ $ npx sequelize-cli db:seed:all
 # Agora você pode acessar
 $ http://localhost:5000
 ```
+
+<h1 id="postman">Postman</h1>
+- Primeiro, importe o <a href="swagger.json">arquivos</a>.
+</br>
+- Abra o Postman, clique em <strong>`File`</strong> -> <strong>`Import`</strong> -> <strong>`File`</strong> -> ,<strong>`Upload files`</strong>.
+<img src="documents/img/postman_import.jpg"></img>
+</br>
+- Depois de importar o arquivo, clique em <strong>`Colections`</strong>.
+<img src="documents/img/postman_collections.jpg"></img>
+</br>
+- A partir daqui você consegue testar a nossa API ! Para isso, entre em <strong>sessions</strong>.
+<img src="documents/img/postman_sessions.jpg"></img>
+</br>
+- Coloque as credenciais do usuário e clique em <strong>`Send`</strong>.
+<img src="documents/img/postman_sessions_body.jpg"></img>
+</br>
+- Com o token gerado no passo anterior, você consegue acessar as APIs.
+<p><li>Clique em <strong>Authorization</strong></li></p>
+<img src="documents/img/postman_token.jpg"></img>
+</br>
+<p><li>Cole o token no campo.</li></p>
+<img src="documents/img/postman_token2.jpg"></img>
+</br>
+- Clique em <strong>send</strong> e pronto, está rodando :smile: .
+<img src="documents/img/postman_example.jpg"></img>
