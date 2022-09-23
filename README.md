@@ -124,15 +124,20 @@ Breve descrição dos endpoints da aplicação.
 
 <h2>🐳 Execute com o Docker</h2>
 
+🚨 Configure as variáveis ambiente alterando o arquivo `.env.example` para `.env`
+
 ```bash
 # Clone o repositório
 $ git clone https://github.com/pedro-drosa/substance.git
 
 # Inicie os containers
+
 $ docker-compose up
 
 # Agora você pode acessar
+
 $ http://localhost:5000
+
 ```
 
 <h2>⚡ Execute sem o Docker</h2>
